@@ -18,7 +18,7 @@ Class instagram_basic_api {
     function __construct ($params){
         //save instagram code
 
-        $this->_getCode = $params['get_code'];
+        $this->_getCode = $param['get_code'];
 
         //get an access token
         $this->_setUserInstagramAccessToken($param);

@@ -54,7 +54,7 @@ Class instagram_basic_api {
             $this->hasUserAccessToken = true;
             
             //long lived access token
-            $longLivedAccessTokenResponse = $this ->_getLongLivedUserAccessToken();
+           
         }
     }
 

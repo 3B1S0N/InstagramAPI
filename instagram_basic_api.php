@@ -10,7 +10,9 @@ Class instagram_basic_api {
     //private $_redirectUrl = INSTAGRAM_APP_REDIRECT_URI;
     private $_getCode = '';
     private $_apiBaseUrl = 'https://api.instagram.com/';
+    private $_graphBaseUrl = 'https://graph.instagram.com/';
     private $_userAccessToken = '';
+    private $_userAccessTokenExpires = '';
 
     public $authorizationUrl = '';
     public $hasUserAccessToken = false;
@@ -31,6 +33,10 @@ Class instagram_basic_api {
     public function getUserAccessToken(){
         return $this->_userAccessToken;
 
+    }
+    
+    public function getUserAccessTokenExpires(){
+        return $this->_userAccessTokenExpires;
     }
 
     private function _setAuthorizationUrl(){
@@ -54,7 +60,9 @@ Class instagram_basic_api {
             $this->hasUserAccessToken = true;
             
             //long lived access token
-           
+           $longLivedAccessTokenResponse = $this -> _getLongLivedAccessToken();
+           $this->_userAccessToken = $longLivedTokenResponse['access_token'];
+           $this->_userAccessTokenExpires = $longLivedTokenResponse['expires_in'];
         }
     }
 
@@ -75,6 +83,22 @@ Class instagram_basic_api {
         return $repsonse;
     }
     
+      private function _getLongLivedUserAccessToken(){
+           $params = array(
+            'endpoint_url'=> $this->_graphBaseUrl . 'access_token',
+            'type' => 'GET',
+            'url_params' => array(
+                'client_secret' => $this->_appSecret,
+                'grant_type' => 'ig_exchange_token'
+             
+            )
+        );
+
+        $response = $this->_makeApiCall ($params);
+        return $repsonse;
+    }
+
+    
   
     private function _makeApiCall($params){
         $ch = curl_init();
@@ -85,6 +109,11 @@ Class instagram_basic_api {
             //for a post request
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params['url_params']));
             curl_setopt($ch, CURLOPT_POST, 1);
+        } elseif ('GET' == $params['type']{
+            $params['url_params']['access_token'] = $this -> _userAccessToken;
+            
+            //add params to endpoint
+            $endpoint .= '?' . http_build_query($params['url_params] );
         }
 
         //general curl options

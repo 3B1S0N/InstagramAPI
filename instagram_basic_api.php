@@ -60,8 +60,8 @@ Class instagram_basic_api {
             'endpoint_url'=> $this->_apiBaseUrl.'oauth/access_token',
             'type' => 'POST',
             'url_params' => array(
-                'app_id' =>$this -> _appID,
-                'app_secret' => $this ->_appSecret,
+                'client_id' =>$this -> _appID,
+                'client_secret' => $this ->_appSecret,
                 'grant_type' => 'authorization_code',
                 'redirect_uri' => $this ->_redirectURL,
                 'code' => $this -> _getCode

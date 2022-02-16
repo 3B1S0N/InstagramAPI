@@ -18,7 +18,7 @@ $params= array(
     <h6>Access Token</h6>
     <?php echo $ig -> _getUserAccessToken(); ?>
     <h6>Expires in</h6>
-    <php echo ceil($ig->getUserAccessTokenExpires()); >? days
+    <php echo ceil($ig->getUserAccessTokenExpires() /86400); >? days
   
 <?php else : ?>
     <a href = "<?php echo $ig->authorizationUrl; ?>">

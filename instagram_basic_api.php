@@ -57,7 +57,7 @@ Class instagram_basic_api {
 
     private function _getUserAccessToken(){
         $params = array(
-            'endpoint_url'=> $this->_apiBaseUrl.'oauth/access_token \',
+            'endpoint_url'=> $this->_apiBaseUrl.'oauth/access_token',
             'type' => 'POST',
             'url_params' => array(
                 'app_id' =>$this -> _appID,

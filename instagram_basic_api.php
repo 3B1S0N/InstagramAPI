@@ -52,16 +52,19 @@ Class instagram_basic_api {
             $userAccessTokenResponse = $this->_getUserAccessToken();
             $this->_userAccessToken = $userAccessTokenResponse['access_token'];
             $this->hasUserAccessToken = true;
+            
+            //long lived access token
+            $longLivedAccessTokenResponse = $this ->_getLongLivedUserAccessToken();
         }
     }
 
     private function _getUserAccessToken(){
         $params = array(
-            'endpoint_url'=> $this->_apiBaseUrl.'oauth/access_token',
+            'endpoint_url'=> $this->_apiBaseUrl . 'oauth/access_token',
             'type' => 'POST',
             'url_params' => array(
-                'client_id' =>$this -> _appID,
-                'client_secret' => $this ->_appSecret,
+                'app_id' =>$this -> _appID,
+                'app_secret' => $this ->_appSecret,
                 'grant_type' => 'authorization_code',
                 'redirect_uri' => $this ->_redirectURL,
                 'code' => $this -> _getCode
@@ -71,7 +74,8 @@ Class instagram_basic_api {
         $response = $this->_makeApiCall ($params);
         return $repsonse;
     }
-
+    
+  
     private function _makeApiCall($params){
         $ch = curl_init();
 

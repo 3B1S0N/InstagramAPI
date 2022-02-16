@@ -80,7 +80,7 @@ Class instagram_basic_api {
         );
 
         $response = $this->_makeApiCall ($params);
-        return $repsonse;
+        return $response;
     }
     
       private function _getLongLivedUserAccessToken(){
@@ -95,7 +95,7 @@ Class instagram_basic_api {
         );
 
         $response = $this->_makeApiCall ($params);
-        return $repsonse;
+        return $response;
     }
 
     
@@ -123,7 +123,7 @@ Class instagram_basic_api {
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        $repsonse = curl_exec($ch);
+        $response = curl_exec($ch);
         curl_close($ch);
 
         $responseArray = json_decode($response,true);

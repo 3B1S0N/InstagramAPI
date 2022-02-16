@@ -6,8 +6,8 @@ $params= array(
 
 );
 
-//instantiate class
-$ig = new instagram_basic_api($params);
+    //instantiate class
+    $ig = new instagram_basic_api($params);
 
 ?>
 
@@ -15,7 +15,10 @@ $ig = new instagram_basic_api($params);
 </hr>
 <?php if ($ig-> hasUserAccessToken) : ?>
     <h4>IG Info</h4>
+    <h6>Access Token</h6>
     <?php echo $ig -> _getUserAccessToken(); ?>
+    <h6>Expires in</h6>
+    <php echo ceil($ig->getUserAccessTokenExpires()); >? days
   
 <?php else : ?>
     <a href = "<?php echo $ig->authorizationUrl; ?>">

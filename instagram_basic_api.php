@@ -60,9 +60,9 @@ Class instagram_basic_api {
             $this->hasUserAccessToken = true;
             
             //long lived access token
-           $longLivedAccessTokenResponse = $this -> _getLongLivedAccessToken();
-           $this->_userAccessToken = $longLivedTokenResponse['access_token'];
-           $this->_userAccessTokenExpires = $longLivedTokenResponse['expires_in'];
+           $longLivedAccessTokenResponse = $this -> _getLongLivedUserAccessToken();
+           $this->_userAccessToken = $longLivedAccessTokenResponse['access_token'];
+           $this->_userAccessTokenExpires = $longLivedAccessTokenResponse['expires_in'];
         }
     }
 
@@ -111,7 +111,7 @@ Class instagram_basic_api {
             curl_setopt($ch, CURLOPT_POST, 1);
         } 
         elseif ('GET' == $params['type']){
-            $params['url_params']['access_token'] = $this->_userAccessToken
+            $params['url_params']['access_token'] = $this->_userAccessToken;
             
             $endpoint = '?' . http_build_query($params['url_params']);
         }

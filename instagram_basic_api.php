@@ -10,9 +10,8 @@ Class instagram_basic_api {
     //private $_redirectUrl = INSTAGRAM_APP_REDIRECT_URI;
     private $_getCode = '';
     private $_apiBaseUrl = 'https://api.instagram.com/';
-    private $_graphBaseUrl = 'https://graph.instagram.com/';
     private $_userAccessToken = '';
-    private $_userAccessTokenExpires = '';
+    //private $_userAccessTokenExpires = '';
 
     public $authorizationUrl = '';
     public $hasUserAccessToken = false;
@@ -60,9 +59,9 @@ Class instagram_basic_api {
             $this->hasUserAccessToken = true;
             
             //long lived access token
-           $longLivedAccessTokenResponse = $this -> _getLongLivedAccessToken();
-           $this->_userAccessToken = $longLivedTokenResponse['access_token'];
-           $this->_userAccessTokenExpires = $longLivedTokenResponse['expires_in'];
+           //$longLivedAccessTokenResponse = $this -> _getLongLivedAccessToken();
+           //$this->_userAccessToken = $longLivedTokenResponse['access_token'];
+           //$this->_userAccessTokenExpires = $longLivedTokenResponse['expires_in'];
         }
     }
 
@@ -75,7 +74,7 @@ Class instagram_basic_api {
                 'app_secret' => $this ->_appSecret,
                 'grant_type' => 'authorization_code',
                 'redirect_uri' => $this ->_redirectURL,
-                'code' => $this -> _getCode
+                'code' => $this ->_getCode
             )
         );
 
@@ -83,7 +82,7 @@ Class instagram_basic_api {
         return $response;
     }
     
-      private function _getLongLivedUserAccessToken(){
+     /** private function _getLongLivedUserAccessToken(){
            $params = array(
             'endpoint_url'=> $this->_graphBaseUrl . 'access_token',
             'type' => 'GET',
@@ -96,7 +95,7 @@ Class instagram_basic_api {
 
         $response = $this->_makeApiCall ($params);
         return $response;
-    }
+    }**/
 
     
   
@@ -109,12 +108,7 @@ Class instagram_basic_api {
             //for a post request
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params['url_params']));
             curl_setopt($ch, CURLOPT_POST, 1);
-        } elseif ('GET' == $params['type']{
-            $params['url_params']['access_token'] = $this -> _userAccessToken;
-            
-            //add params to endpoint
-            $endpoint .= '?' . http_build_query($params['url_params] );
-        }
+        } 
 
         //general curl options
         curl_setopt($ch, CURLOPT_URL, $endpoint);
@@ -125,7 +119,8 @@ Class instagram_basic_api {
 
         $response = curl_exec($ch);
         curl_close($ch);
-
+        
+         //returns response
         $responseArray = json_decode($response,true);
 
         if (isset($responseArray['error_type'])){

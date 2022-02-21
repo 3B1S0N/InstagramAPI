@@ -10,8 +10,9 @@ Class instagram_basic_api {
     //private $_redirectUrl = INSTAGRAM_APP_REDIRECT_URI;
     private $_getCode = '';
     private $_apiBaseUrl = 'https://api.instagram.com/';
+    private $_graphBaseUrl = 'https://graph.instagram.com/';
     private $_userAccessToken = '';
-    //private $_userAccessTokenExpires = '';
+    private $_userAccessTokenExpires = '';
 
     public $authorizationUrl = '';
     public $hasUserAccessToken = false;
@@ -59,9 +60,9 @@ Class instagram_basic_api {
             $this->hasUserAccessToken = true;
             
             //long lived access token
-           //$longLivedAccessTokenResponse = $this -> _getLongLivedAccessToken();
-           //$this->_userAccessToken = $longLivedTokenResponse['access_token'];
-           //$this->_userAccessTokenExpires = $longLivedTokenResponse['expires_in'];
+           $longLivedAccessTokenResponse = $this -> _getLongLivedAccessToken();
+           $this->_userAccessToken = $longLivedTokenResponse['access_token'];
+           $this->_userAccessTokenExpires = $longLivedTokenResponse['expires_in'];
         }
     }
 
@@ -82,7 +83,7 @@ Class instagram_basic_api {
         return $response;
     }
     
-     /** private function _getLongLivedUserAccessToken(){
+     private function _getLongLivedUserAccessToken(){
            $params = array(
             'endpoint_url'=> $this->_graphBaseUrl . 'access_token',
             'type' => 'GET',
@@ -95,7 +96,7 @@ Class instagram_basic_api {
 
         $response = $this->_makeApiCall ($params);
         return $response;
-    }**/
+    }
 
     
   
@@ -109,6 +110,11 @@ Class instagram_basic_api {
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params['url_params']));
             curl_setopt($ch, CURLOPT_POST, 1);
         } 
+        elseif ('GET' == $params['type']){
+            $params['url_params']['access_token'] = $this->_userAccessToken
+            
+            $endpoint = '?' . http_build_query($params['url_params']);
+        }
 
         //general curl options
         curl_setopt($ch, CURLOPT_URL, $endpoint);

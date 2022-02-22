@@ -109,7 +109,7 @@ Class instagram_basic_api {
             'endpoint_url'=> $this->_graphBaseUrl . 'me',
             'type' => 'GET',
             'url_params' => array(
-                'fields' => 'id,username,media_count,account_type',  
+                'fields' => 'id,username,media_count,account_type'  
              
             )
         );

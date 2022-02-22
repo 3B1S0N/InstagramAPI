@@ -14,13 +14,11 @@ $params= array(
 ?>
 
 <h1>Instagram Basic Display API</h1>
-</hr>
 <?php if ($ig-> hasUserAccessToken) : ?>
     <h4>IG Info</h4>
     <hr/>
     <?php echo $ig -> getUserAccessToken(); ?>
     <hr/>
-    
     
 <?php else : ?>
     <a href = "<?php echo $ig->authorizationUrl; ?>">

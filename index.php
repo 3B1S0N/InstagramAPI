@@ -19,7 +19,8 @@ $params= array(
     <hr/>
     <?php echo $ig -> getUserAccessToken(); ?>
     <hr/>
-    
+    <h6>Expires in</h6>
+    <?php echo ceil($ig->getUserAccessTokenExpires()/86400); ?> days
 <?php else : ?>
     <a href = "<?php echo $ig->authorizationUrl; ?>">
         Authorize w/Instagram

@@ -104,20 +104,19 @@ Class instagram_basic_api {
         return $response;
     }
 
-    public function getUser(){
+    /**public function getUser(){
         $params = array(
             'endpoint_url'=> $this->_graphBaseUrl . 'me',
             'type' => 'GET',
             'url_params' => array(
                 'fields' => 'id,username,media_count,account_type'  
-             
             )
         );
 
         $response = $this->_makeApiCall ($params);
         return $response;
 
-    }
+    }**/
 
     
   

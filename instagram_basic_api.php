@@ -53,11 +53,11 @@ Class instagram_basic_api {
     }
 
     private function _setUserInstagramAccessToken($params){
-        /**if($params['acesss_token']){ //having an access token
+        if($params['acesss_token']){ //having an access token
             $this->_userAccessToken = $params['access_token'];
             $this->hasUserAccessToken = true;
             
-        }**/
+        }
         if ($params['get_code']){
             //try and get an access token
             $userAccessTokenResponse = $this->_getUserAccessToken();
@@ -104,7 +104,7 @@ Class instagram_basic_api {
         return $response;
     }
 
-    /**public function getUser(){
+    public function getUser(){
         $params = array(
             'endpoint_url'=> $this->_graphBaseUrl . 'me',
             'type' => 'GET',
@@ -116,7 +116,7 @@ Class instagram_basic_api {
         $response = $this->_makeApiCall ($params);
         return $response;
 
-    }**/
+    }
 
     
   

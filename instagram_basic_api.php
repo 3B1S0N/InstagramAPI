@@ -53,7 +53,7 @@ Class instagram_basic_api {
     }
 
     private function _setUserInstagramAccessToken($params){
-        if($params['acesss_token]){ //having an access token
+        if($params['acesss_token']){ //having an access token
             $this->_userAccessToken = $params['access_token'];
             $this->hasUserAccessToken = true;
             
@@ -102,6 +102,21 @@ Class instagram_basic_api {
 
         $response = $this->_makeApiCall ($params);
         return $response;
+    }
+
+    public function getUser(){
+        $params = array(
+            'endpoint_url'=> $this->_graphBaseUrl . 'me',
+            'type' => 'GET',
+            'url_params' => array(
+                'fields' => 'id,username,media_count,account_type',  
+             
+            )
+        );
+
+        $response = $this->_makeApiCall ($params);
+        return $response;
+
     }
 
     

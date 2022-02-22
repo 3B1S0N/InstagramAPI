@@ -1,11 +1,8 @@
 <?php
 require_once('instagram_basic_api.php');
-$accessToken = 'IGQVJXdGVaT0cwMTJsQ2xKendlVWxCLTUtZAU5fdEs0cHRmdndKSFc2T1BsTUxLSHBzeHRCT2JweVF5TTI2MnE3TzMwaVptNWQ4ZAG82TF9WZAEM1NFlJRmFPdEJrZADZA3S2ZA3eVpkdkl3';
-
 
 $params= array(
-    'get_code' => isset($_GET['code']) ? $_GET['code'] : '',
-    'access_token' => $accessToken
+    'get_code' => isset($_GET['code']) ? $_GET['code'] : ''
 
 );
 
@@ -18,10 +15,19 @@ $params= array(
 </hr>
 <?php if ($ig-> hasUserAccessToken) : ?>
     <h4>IG Info</h4>
-    <h6>Access Token</h6>
+    <hr/>
     <?php echo $ig -> getUserAccessToken(); ?>
-    <h6>Expires in</h6>
-    <?php echo ceil($ig -> getUserAccessTokenExpires()/86400 );?> days
+    <hr/>
+    <?php $user = $ig->getUser();?>
+    <pre>
+        <?php print_r($user);?>
+    </pre>
+    <h1>Username: <?php ech $user['username'];?></h1>
+    <h2>IG ID: <?php ech $user['id'];?></h1>
+    <h3>Media Count: <?php ech $user['media_count'];?></h1>
+    <h4>Account Type: <?php ech $user['account_type'];?></h1>
+    <h6>Access Token</h6>
+    <hr/>
     
 <?php else : ?>
     <a href = "<?php echo $ig->authorizationUrl; ?>">

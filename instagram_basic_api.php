@@ -114,7 +114,7 @@ Class instagram_basic_api {
         elseif ('GET' == $params['type']){
             $params['url_params']['access_token'] = $this->_userAccessToken;
             
-            $endpoint = '?' . http_build_query($params['url_params']);
+            $endpoint .= '?' . http_build_query($params['url_params']);
         }
 
         //general curl options

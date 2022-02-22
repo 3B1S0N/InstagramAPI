@@ -53,6 +53,11 @@ Class instagram_basic_api {
     }
 
     private function _setUserInstagramAccessToken($params){
+        if($params['acesss_token]){ //having an access token
+            $this->_userAccessToken = $params['access_token'];
+            $this->hasUserAccessToken = true;
+            
+        }
         if ($params['get_code']){
             //try and get an access token
             $userAccessTokenResponse = $this->_getUserAccessToken();

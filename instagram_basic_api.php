@@ -85,11 +85,12 @@ Class instagram_basic_api {
     
      private function _getLongLivedUserAccessToken(){
            $params = array(
-            'endpoint_url'=> $this->_graphBaseUrl . 'access_token',
+            'endpoint_url'=> $this->_graphBaseUrl . 'access_token'
             'type' => 'GET',
             'url_params' => array(
                 'client_secret' => $this->_appSecret,
-                'grant_type' => 'ig_exchange_token'
+                'grant_type' => 'ig_exchange_token',
+                
              
             )
         );

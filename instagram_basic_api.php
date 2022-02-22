@@ -89,7 +89,7 @@ Class instagram_basic_api {
             'type' => 'GET',
             'url_params' => array(
                 'client_secret' => $this->_appSecret,
-                'grant_type' => 'ig_exchange_token',
+                'grant_type' => 'ig_exchange_token'
                 
              
             )
@@ -114,7 +114,7 @@ Class instagram_basic_api {
         elseif ('GET' == $params['type']){
             $params['url_params']['access_token'] = $this->_userAccessToken;
             
-            $endpoint = '?' . http_build_query($params['url_params']);
+            $endpoint .= '?' . http_build_query($params['url_params']);
         }
 
         //general curl options

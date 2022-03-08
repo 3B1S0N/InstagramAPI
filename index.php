@@ -18,7 +18,7 @@ $ig = new instagram_basic_api($params);
     <h6>Access Token</h6>
     <?php echo $ig-> getUserAccessToken();?> 
     <h6>Expires In</h6>
-    <?php echo ceil($ig->getUserAccessTokenExpires()/86400);?>
+    <?php echo ceil($ig->getUserAccessTokenExpires()/86400);?> days
 
 
 <?php else : ?>

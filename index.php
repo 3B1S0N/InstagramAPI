@@ -4,7 +4,7 @@ require_once('instagram_basic_api.php');
 $accessToken = 'IGQVJYVU1Kc0d5d2xaV2hWZAmR6M3EyYlBuWkRjZAEM3RDczX1hmQ0xTMlJhb0NUZAlZATNzN2cGxIcFpxV1RHRUhhbHZAjc1Q2eDVIdkNaVlZAWVmtWNDV4VlRmYy1BdzRSVXRMdEZAsMnZAB';
 
 $params= array(
-    'get_code' => isset($_GET['code']) ? $_GET['code'] : ''
+    'get_code' => isset($_GET['code']) ? $_GET['code'] : '',
     'access_token' => $accessToken
 );
 

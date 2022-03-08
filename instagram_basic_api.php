@@ -16,6 +16,7 @@ Class instagram_basic_api {
 
     public $authorizationUrl = '';
     public $hasUserAccessToken = false;
+    public $userId = '';
 
     function __construct ($params){
         //save instagram code
@@ -58,6 +59,7 @@ Class instagram_basic_api {
             //we have an access token
             $this-> _userAccessToken = $params['access_token'];
             $this-> hasUserAccessToken = true;
+            $this->userId = $params['user_id'];
 
         }
         if ($params['get_code']){
@@ -65,6 +67,7 @@ Class instagram_basic_api {
             $userAccessTokenResponse = $this->_getUserAccessToken();
             $this-> _userAccessToken = $userAccessTokenResponse['access_token'];
             $this-> hasUserAccessToken = true;
+            $this->userId =  $userAccessTokenResponse['user_id'];
 
             //get long lived access token
             $longLivedAccessTokenResponse = $this->_getLongLivedUserAccessToken();
@@ -110,6 +113,20 @@ Class instagram_basic_api {
             'type' => 'GET',
             'url_params' => array(
                 'fields' => 'id,username,media_count,account_type'
+                
+            )
+        );
+
+        $response = $this->_makeApiCall ($params);
+        return $response;
+    }
+
+    public function getUsersMedia(){
+        $params = array(
+            'endpoint_url'=> $this->_graphBaseUrl . $this->userId . '/media',
+            'type' => 'GET',
+            'url_params' => array(
+                'fields' => 'id,caption,media_type,media_url'
                 
             )
         );

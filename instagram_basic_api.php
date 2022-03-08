@@ -69,7 +69,7 @@ Class instagram_basic_api {
         );
 
         $response = $this->_makeApiCall ($params);
-        return $repsonse;
+        return $response;
     }
 
     private function _makeApiCall($params){

@@ -32,7 +32,7 @@ $ig = new instagram_basic_api($params);
     <?php echo $ig-> getUserAccessToken();?> 
     <hr/>
 
-    <?php $usersMedia = $ig->getUsersMedia();>?
+    <?php $usersMedia = $ig->getUsersMedia();?>
     <h3>Users Media Page 1 (<?php echo count($usersMedia['data']); ?>)</h3>
     <h4>Raw Data</h4>
     <textarea style='width:100%;height:400px;'><?php print_r($usersMedia['data']);?></textarea>

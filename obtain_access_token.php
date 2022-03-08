@@ -25,7 +25,7 @@
     if(isset($_GET['code'])){
     }
     else{
-        $permissions = ['public_profile','instagram_basic','pages_show_list'];
+        $permissions = ['public_profile'];
         $loginUrl = $helper ->getLoginUrl(FACEBOOK_REDIRECT_URI,$permissions);
 
         echo '<a href="' . $loginUrl . '">

@@ -90,7 +90,7 @@ Class instagram_basic_api {
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        $repsonse = curl_exec($ch);
+        $response = curl_exec($ch);
         curl_close($ch);
 
         $responseArray = json_decode($response,true);

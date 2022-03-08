@@ -89,8 +89,8 @@ Class instagram_basic_api {
             'endpoint_url'=> $this->_graphBaseUrl . 'access_token',
             'type' => 'GET',
             'url_params' => array(
-                'client_secret' => $this _appSecret,
-                'grant_type' => 'ig_exchange_token'
+                'client_secret' => $this -> _appSecret,
+                'grant_type' => 'ig_exchange_token',
             )
         );
 

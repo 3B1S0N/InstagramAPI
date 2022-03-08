@@ -36,6 +36,22 @@ $ig = new instagram_basic_api($params);
     <h3>Users Media Page 1 (<?php echo count($usersMedia['data']); ?>)</h3>
     <h4>Raw Data</h4>
     <textarea style='width:100%;height:400px;'><?php print_r($usersMedia['data']);?></textarea>
+    
+    <h4>Posts</h4>
+    <ul style = 'list-style:none;margin:0px;padding:0px;'>
+        <?php foreach($usersMedia['data'] as $post) : ?>
+            <li style='margin-botton:20px;border:3px solid #333'>
+                <div>
+                    <?php if ('IMAGE' == $post ['media_type'] || 'CAROUSEL_ALBUM' == $post ['media_type'] ) : ?>
+                        <img style = 'height:320px' src="<?php echo $post['media_url']; ?>" />
+                        <?php else : ?>
+                            <video height='240' width='320' controls>
+                                <source src="<?php echo $post['media_url']; ?>">
+                            </video>
+                        <?php endif;?>
+                </div>
+            </li>
+    </ul>
 
    
 

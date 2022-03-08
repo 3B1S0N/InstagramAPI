@@ -57,8 +57,8 @@ Class instagram_basic_api {
         if ($params['get_code']){
             //try and get an access token
             $userAccessTokenResponse = $this->_getUserAccessToken();
-            $this->_userAccessToken = $userAccessTokenResponse['access_token'];
-            $this->hasUserAccessToken = true;
+            $this-> _userAccessToken = $userAccessTokenResponse['access_token'];
+            $this-> hasUserAccessToken = true;
 
             //get long lived access token
             $longLivedAccessTokenResponse = $this->_getLongLivedUserAccessToken();
@@ -75,7 +75,7 @@ Class instagram_basic_api {
                 'app_id' =>$this -> _appID,
                 'app_secret' => $this ->_appSecret,
                 'grant_type' => 'authorization_code',
-                'redirect_uri' => $this ->_redirectURL,
+                'redirect_uri' => $this -> _redirectURL,
                 'code' => $this -> _getCode
             )
         );
@@ -91,7 +91,6 @@ Class instagram_basic_api {
             'url_params' => array(
                 'client_secret' => $this _appSecret,
                 'grant_type' => 'ig_exchange_token'
-           
             )
         );
 

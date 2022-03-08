@@ -60,7 +60,7 @@ Class instagram_basic_api {
             $this->_userAccessToken = $userAccessTokenResponse['access_token'];
             $this->hasUserAccessToken = true;
 
-            //get longed lived access token
+            //get long lived access token
             $longLivedAccessTokenResponse = $this->_getLongLivedUserAccessToken();
             $this->_userAccessToken = $longLivedAccessTokenResponse['access_token'];
             $this->_userAccessTokenExpires =  $longLivedAccessTokenResponse['expires_in'];
@@ -89,7 +89,7 @@ Class instagram_basic_api {
             'endpoint_url'=> $this->_graphBaseUrl . 'access_token',
             'type' => 'GET',
             'url_params' => array(
-                'client_secret' => $this_appSecret,
+                'client_secret' => $this _appSecret,
                 'grant_type' => 'ig_exchange_token'
            
             )

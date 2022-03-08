@@ -43,9 +43,9 @@ $ig = new instagram_basic_api($params);
             <li style='margin-botton:20px;border:3px solid #333'>
                 <div>
                     <?php if ('IMAGE' == $post ['media_type'] || 'CAROUSEL_ALBUM' == $post ['media_type'] ) : ?>
-                        <img style = 'height:320px' src="<?php echo $post['media_url']; ?>" />
-                        <?php else : ?>
-                            <video height='240' width='320' controls>
+                        <img style = "height:320px" src="<?php echo $post['media_url']; ?>" />
+                        <?php else : ?>1
+                            <video height="240" width="320" controls>
                                 <source src="<?php echo $post['media_url']; ?>">
                             </video>
                         <?php endif;?>

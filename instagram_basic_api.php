@@ -126,8 +126,7 @@ Class instagram_basic_api {
             'endpoint_url'=> $this->_graphBaseUrl . $this->userId . '/media',
             'type' => 'GET',
             'url_params' => array(
-                'fields' => 'id,caption,media_type,media_url'
-                
+                'fields' => 'id,caption,media_type,media_url,timestamp'  
             )
         );
 

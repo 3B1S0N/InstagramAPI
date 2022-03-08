@@ -14,8 +14,7 @@ $ig = new instagram_basic_api($params);
 <h1>Instagram Basic Display API</h2>
 </hr>
 <?php if ($ig-> hasUserAccessToken) : ?>
-    <h4>IG Info</h4>
-    <?php echo $ig-> getUserAccessToken();?>
+    echo 'yes';
 
 <?php else : ?>
     <a href = "<?php echo $ig->authorizationUrl; ?>">

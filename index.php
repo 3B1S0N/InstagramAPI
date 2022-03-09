@@ -32,6 +32,22 @@ $ig = new instagram_basic_api($params);
     <?php echo $ig-> getUserAccessToken();?> 
     <hr/>
 
+    <!--Highlighted Carousel Album-->
+    <h3>Highlighted Post</h3>
+    <?php HighlightedPostId = '17947481026714205'; ?>
+    <div>Media ID: <?php echo $highlightedPostId; ?></div>
+    <div>
+        <?php
+            $media = $ig->getMedia($highlightedPostId);
+            $mediaChildren = $ig->getMediaChildren($highlightedPostId);
+        ?>
+        <h4>Raw Data</h4>
+        <textarea style="width:100%;height:400px;">
+            Media <?php print_r($mediaChildren);?>
+            Children <?php print_r($mediaChildren); ?>
+        </textarea>
+    </div>
+
     <?php $usersMedia = $ig->getUsersMedia();?>
     <h3>Users Media Page 1 (<?php echo count($usersMedia['data']); ?>)</h3>
     <h4>Raw Data</h4>

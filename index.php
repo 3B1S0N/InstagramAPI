@@ -50,6 +50,21 @@ $ig = new instagram_basic_api($params);
                             </video>
             <?php endif;?>
                 </div>
+                <div class='caption'>
+                    <b>Caption: <?php echo $post['caption'];?></b>
+                </div>
+                <div class='pic_id'>
+                    ID: <?php echo $post['id'];?>
+                </div>
+                <div class='media_type'>
+                    Media Type: <?php echo $post['media_type'];?>
+                </div>
+                <div class='timestamp'>
+                    Timestamp: <?php echo $post['timestamp'];?>
+                </div>
+                <div class='media_url'>
+                    Media URL: <?php echo $post['media_url'];?>
+                </div>
             </li>
         <?php endforeach;?>
     </ul>
